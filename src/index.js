@@ -1,12 +1,27 @@
-export function lifeShowing (hero) {
-    //console.log(hero.name, hero.health)
-    if (hero.health < 15) {
-        return 'critical';
+/* let mas = [
+    {name: 'мечник', health: 10},
+    {name: 'маг', health: 100},
+    {name: 'лучник', health: 80},
+  ]; */
+
+
+
+export function lifeTop (mas) {
+
+    //сортировка
+    let stat = false;
+    while (stat == false) {
+        stat = true;
+        for (let i=0; i<mas.length-1; i++) {
+            if (mas[i].health < mas[i+1].health) {
+                stat = false;
+                let a = mas[i];
+                mas[i]= mas[i+1];
+                mas[i+1] = a;
+            }
+        }
     }
-    if (hero.health >= 15 && hero.health < 50) {
-        return 'cwounded';
-    }
-    if (hero.health >= 50) {
-        return 'healthy';
-    }
+
+    //возврат
+    return mas;
 }

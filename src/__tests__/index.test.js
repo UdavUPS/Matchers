@@ -1,15 +1,52 @@
-import { lifeShowing } from '../index.js';
+import { lifeTop } from '../index.js';
 
-test.each([
-  ['critical',{name: 'Маг', health: 10},'critical'],
-  ['cwounded',{name: 'Маг', health: 25},'cwounded'],
-  ['healthy',{name: 'Маг', health: 60},'healthy'],
-])(('life showing test'), (__, testObject, result) => {
-  expect(lifeShowing(testObject)).toBe(result);
+
+test ('Проверка сортировки', () => {
+  let mas = [
+    {name: 'мечник', health: 10},
+    {name: 'маг', health: 100},
+    {name: 'лучник', health: 80},
+  ]
+
+  let resultMas = [
+    {name: 'маг', health: 100},
+    {name: 'лучник', health: 80},
+    {name: 'мечник', health: 10},
+  ]
+
+  expect(lifeTop(mas)).toEqual(resultMas);
 })
 
 
-/* test('life showing test', () => {
-  let hero = {name: 'Маг', health: 51};
-  expect(lifeShowing(hero)).toBe('cwounded');
-}) */
+
+/* test.each(
+  ['test_1',[
+    {name: 'мечник', health: 10},
+    {name: 'маг', health: 100},
+    {name: 'лучник', health: 80},
+  ],[
+    {name: 'маг', health: 100},
+    {name: 'лучник', health: 80},
+    {name: 'мечник', health: 10},
+  ]],
+  ['test_2',[
+    {name: 'маг', health: 25},
+    {name: 'мечник', health: 44},
+    {name: 'лучник', health: 70},
+  ],[
+    {name: 'лучник', health: 70},
+    {name: 'мечник', health: 44},
+    {name: 'маг', health: 25},
+  ]],
+  ['test_3',[
+    {name: 'лучник', health: 54},
+    {name: 'маг', health: 3},
+    {name: 'мечник', health: 15},
+  ],[
+    {name: 'маг', health: 54},
+    {name: 'лучник', health: 15},
+    {name: 'мечник', health: 3},
+  ]]),(
+    ('Проверка сортировки'), (__, inputData, outputData) => {
+      expect(lifeTop(inputData)).toEqual(outputData);
+    }); */
